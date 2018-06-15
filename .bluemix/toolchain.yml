@@ -42,9 +42,9 @@ services:
         execute: true
   webide:
     service_id: orion
-# form:
-#   pipeline:
-#     parameters:
-#       prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
-#     schema:
-#       $ref: deploy.json
+form:
+  pipeline:
+    parameters:
+      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
