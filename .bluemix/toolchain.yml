@@ -1,4 +1,6 @@
 ---
+messages:
+  $i18n: locales.yml
 template:
   name: "Workspace Tweets Toolchain"
   description: "This application uses OAuth 1.0 to allow users to send tweets from Watson Workspace conversations"
