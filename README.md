@@ -17,7 +17,7 @@ Assuming you just want to take this code and get it running before hacking it, t
 
 To facilitate things, you can click the button below and it'll get it going to Bluemix very easily, however this is **NOT** required. Feel free to deploy on any server you want.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.ibm.com/Daniela-Dimitrova1/workspace-tweets)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/DaniDimitrova/workspace-tweets.git)
 
 *Note*: you can run this code locally, but then you would need to change the webhook code to get the URL of the callback. See Appendix for instructions.
 
