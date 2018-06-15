@@ -20,7 +20,7 @@ const appId = process.env.TWITTER_CLIENT_ID;
 const appSecret = process.env.TWITTER_CLIENT_SECRET;
 
 // Webhook secret. Obtained from registration of a webhook.
-const webhookSecret = '2dgq0nw88zeunaz74w7s8iq207ghrf9t';
+const webhookSecret = process.env.TWITTER_WEBHOOK_SECRET;
 
 // Twitter API keys obtained via: https://apps.twitter.com (see README for more info)
 // a JSON object with all the authentication info for Twitter
@@ -85,11 +85,10 @@ const authenticateTwitter = (req, callback) => {
 
   const httpMethod = 'POST';
   const requestTokenUrl = 'https://api.twitter.com/oauth/request_token';
-  const callbackUrl = 'https://8d1a5a24.ngrok.io/authsuccess';
+  const callbackUrl = process.env.CALLBACK_URL + '/authsuccess';
   const encodedCallbackUrl = encodeUrl(callbackUrl);
   const consumerKey = process.env.TWITTER_CONSUMER_KEY;
   const consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
-  const tokenSecret = '8g5qgFL25qdL9hxG7h4kXT4gnkWEmd7lFH3tZRqwcQUPT';
   const timestamp = new Date() / 1000;
   const uuid = uuidv4();
 
