@@ -2,8 +2,10 @@
 messages:
   $i18n: locales.yml
 template:
-  name: "Workspace Tweets Toolchain"
-  description: "This application uses OAuth 1.0 to allow users to send tweets from Watson Workspace conversations"
+  name:
+    $ref: "#/messages/template.name"
+  description:
+    $ref: "#/messages/template.description"
   required:
     - sample-build
     - sample-repo
@@ -16,15 +18,16 @@ toolchain:
   name: 'workspace-tweets-{{timestamp}}'
   template:
     getting_started:
-      '**Your toolchain is ready!**\n**Quick start:** Commit a change to the Git repo to trigger a new build and deployment. For step-by-step instructions, see the [tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_flow?task=2) for this toolchain.'
+      $ref: "#/messages/template.gettingStarted"
 services:
   sample-repo:
     service_id: githubpublic
-    parameters: '{{toolchain.name}}'
-    repo_url: 'https://github.com/ZacharyStair/workspace-tweets'
-    type: clone
-    has_issues: true
-    enable_traceability: true
+    parameters:
+      repo_name: '{{toolchain.name}}'
+      repo_url: 'https://github.com/ZacharyStair/workspace-tweets'
+      type: clone
+      has_issues: true
+      enable_traceability: true
   sample-build:
     service_id: pipeline
     parameters:
@@ -37,10 +40,10 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
-          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
-          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          CF_APP: '{{form.pipeline.parameters.prod-app-name}}'
+          CF_SPACE: '{{form.pipeline.parameters.prod-space}}'
+          CF_ORGANIZATION: '{{form.pipeline.parameters.prod-organization}}'
+          BLUEMIX_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
         execute: true
   webide:
     service_id: orion
